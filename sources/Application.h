@@ -10,7 +10,7 @@ class Application {
 private:
     sf::RenderWindow *m_MainWindow;
     sf::Clock clock;
-    Level m_Level;
+    Level *m_Level;
 private:
     Application();
 public:

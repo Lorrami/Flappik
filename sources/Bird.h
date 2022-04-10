@@ -8,7 +8,7 @@ class Bird : public GameObject {
     static Bird *s_Instance;
 private:
     float m_PosX = 340.0f, m_PosY = 360.0f;
-    float m_SizeX = 42.0f, m_SizeY = 29.0f;
+    float m_SizeX = 42.0f, m_SizeY = 30.0f;
     float m_Speed = 300.0f, m_AnimationSpeed = m_Speed / 2;
     bool m_LeftMove = true;
 private:
@@ -16,6 +16,9 @@ private:
     void PositionUpdate();
     void Texturing();
     void FirstAnimation(float dt);
+    void WindSimulation(float dt);
+public:
+    float WindSpeed = 0;
 public:
     Bird();
     void Update(float dt) override;

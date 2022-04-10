@@ -15,6 +15,8 @@ Bird::Bird() {
 void Bird::Update(float dt) {
     if(!Level::Get().IsGameStarted) {
         FirstAnimation(dt);
+    } else {
+        WindSimulation(dt);
     }
     KeyboardCheck(dt);
 }
@@ -39,6 +41,12 @@ void Bird::KeyboardCheck(float dt) {
         }
     }
     PositionUpdate();
+}
+
+void Bird::WindSimulation(float dt) {
+    if(m_PosX <= 679.0f && m_PosX >= 21.0f) {
+        m_PosX += WindSpeed * dt;
+    }
 }
 
 void Bird::Texturing() {

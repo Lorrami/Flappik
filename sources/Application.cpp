@@ -1,22 +1,23 @@
+#include <iostream>
 #include "Application.h"
 
 Application *Application::s_Instance = nullptr;
 
 Application::Application() {
     m_MainWindow = new sf::RenderWindow(sf::VideoMode(700, 700), "Flappik");
+    m_Level = &Level::Get();
 }
 
 void Application::Run() {
-    m_Level.Initialize();
+    m_Level->Initialize();
     while(m_MainWindow->isOpen()) {
         float dt = clock.getElapsedTime().asSeconds();
         clock.restart();
 
         m_MainWindow->clear();
 
-        m_Level.Update(dt);
-        m_Level.Draw(m_MainWindow);
-
+        m_Level->Update(dt);
+        m_Level->Draw(m_MainWindow);
         m_MainWindow->display();
     }
 }
