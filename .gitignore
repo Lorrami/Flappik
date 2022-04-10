@@ -1,4 +1,7 @@
 .idea
 .vs
 cmake-build-debug
+bin
+obj
+
 record
