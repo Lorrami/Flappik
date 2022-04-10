@@ -3,7 +3,7 @@
 #include "Level.h"
 #include <iostream>
 
-Bird Bird::s_Instance;
+Bird *Bird::s_Instance = nullptr;
 
 Bird::Bird() {
     setPosition(sf::Vector2f(m_PosX, m_PosY));
@@ -17,7 +17,6 @@ void Bird::Update(float dt) {
         FirstAnimation(dt);
     }
     KeyboardCheck(dt);
-    PositionUpdate();
 }
 
 void Bird::PositionUpdate() {
@@ -39,6 +38,7 @@ void Bird::KeyboardCheck(float dt) {
             Level::Get().IsGameStarted = true;
         }
     }
+    PositionUpdate();
 }
 
 void Bird::Texturing() {
@@ -61,5 +61,7 @@ void Bird::FirstAnimation(float dt) {
 }
 
 Bird &Bird::Get() {
-    return s_Instance;
+    if(s_Instance == nullptr)
+        s_Instance = new Bird();
+    return *s_Instance;
 }
