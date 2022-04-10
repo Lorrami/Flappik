@@ -1,6 +1,7 @@
 #include "Level.h"
 #include "Bird.h"
 #include "Block.h"
+#include "Bullet.h"
 
 Level *Level::s_Instance = nullptr;
 
@@ -24,8 +25,11 @@ void Level::Draw(sf::RenderWindow *window) {
 }
 
 void Level::AddingObjects() {
-    m_Objects.push_back(new Bird());
-    m_Objects.push_back(new Block(0, -100));
+    m_Objects.push_back(&Bird::Get());
+    m_Objects.push_back(new Bullet(340.0f, -30.0f));
+    m_Objects.push_back(new Block(-250, -100));
+    m_Objects.push_back(new Block(450, -100));
+
 }
 
 void Level::BackgroundSettings() {

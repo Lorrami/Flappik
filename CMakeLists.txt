@@ -10,7 +10,7 @@ set(SOURCES
         "sources/Level.cpp"
         "sources/Bird.cpp"
         "sources/Block.cpp"
-        )
+        "sources/Bullet.cpp")
 
 add_subdirectory(SFML)
 
